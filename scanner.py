@@ -24,8 +24,6 @@ def fetch_from_crtsh(domain):
         print(f"[-] Error: {e}")
     return subdomains
 
-
-
 def check_subdomain(domain, subdomain_prefix):
     """Checks subdomain IP."""
     subdomain = f"{subdomain_prefix}.{domain}"
@@ -37,7 +35,6 @@ def check_subdomain(domain, subdomain_prefix):
 if __name__ == "__main__":
     domain = input("Domain (example.com): ").strip()
 
-
     # get domain ip
     main_domain_ip = get_ip_address(domain)
     if not main_domain_ip:
@@ -48,7 +45,6 @@ if __name__ == "__main__":
     # get subdomains
     crtsh_subdomains = fetch_from_crtsh(domain)
     print(f"[+] Subdomains found: {len(crtsh_subdomains)}")
-
 
     # create list
     all_subdomains = set(crtsh_subdomains)
@@ -64,7 +60,7 @@ if __name__ == "__main__":
 
     # filter
     different_ips = [entry for entry in subdomains_with_ips if entry[1] != main_domain_ip]
-
+    
     # write
     if different_ips:
         print(f"\n[!] Different subdomains ({len(different_ips)}):")
@@ -72,7 +68,7 @@ if __name__ == "__main__":
             print(f"{subdomain} -> {ip}")
     else:
         print("\n[!] Cannot find different subdomains.")
-
+     
     # save
     with open("discovered_subdomains.txt", "w") as file:
         for subdomain, ip in different_ips:
