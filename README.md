@@ -6,7 +6,7 @@ Finds subdomains located outside the main server.
 
 Open File <br>
 
-<code>python3 domainfork.py   </code>
+<code>python3 domainfork.py</code>
 
 
 Enter Domain <br>
